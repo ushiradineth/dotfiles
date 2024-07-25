@@ -37,12 +37,8 @@ zinit snippet OMZP::kubectx
 zinit wait lucid for \
   OMZP::command-not-found \
   as"completion" \
-    OMZP::terraform/_terraform \
     OMZ::plugins/docker/completions/_docker \
-    OMZP::docker-compose/_docker-compose \
-    OMZP::golang/_golang
-
-zinit snippet OMZP::aws
+    OMZP::docker-compose/_docker-compose
 
 autoload -Uz compinit && compinit
 zinit cdreplay -q
@@ -63,7 +59,6 @@ bindkey '^[w' kill-region
 # Path
 
 PATH=$PATH:$HOME/.local/bin
-PATH=$PATH:$HOME/go/bin
 
 export PATH=$PATH
 
@@ -92,13 +87,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # -----------------------------------------------------------------------------------------------------------------------
 
 # Aliases
-
-alias tf="terraform"
-alias tfw="terraform workspace"
-alias tfws="terraform workspace select"
-alias tfs="terraform state"
-alias tfsl="terraform state list"
-alias tfv="terraform validate && terraform fmt --recursive && tflint"
 
 alias d='docker'
 alias dr='docker run --rm -i -t'
@@ -141,6 +129,7 @@ eval "$(zoxide init zsh)"
 export BAT_THEME=tokyonight_night
 export NVM_DIR="$HOME/.nvm"
 export K9S_CONFIG_DIR="$HOME/dotfiles/.config/k9s" # config does not load on symlinks
+export KUBECONFIG="/etc/rancher/k3s/k3s.yaml"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
