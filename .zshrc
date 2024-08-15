@@ -130,6 +130,7 @@ export BAT_THEME=tokyonight_night
 export NVM_DIR="$HOME/.nvm"
 export K9S_CONFIG_DIR="$HOME/dotfiles/.config/k9s" # config does not load on symlinks
 export KUBECONFIG="/etc/rancher/k3s/k3s.yaml"
+export LG_CONFIG_FILE="$HOME/dotfiles/.config/lazygit/config.yml"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
