@@ -132,6 +132,8 @@ export KUBECONFIG="/etc/rancher/k3s/k3s.yaml"
 export LG_CONFIG_FILE="$HOME/dotfiles/.config/lazygit/config.yml"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+export UID=$(id -u)
+export GID=$(id -g)
 
 # -----------------------------------------------------------------------------------------------------------------------
 
