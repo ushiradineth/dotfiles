@@ -4,9 +4,11 @@ local catppuccin = {
   lazy = false,
   priority = 1000,
   config = function()
-    require("catppuccin").setup()
+    require("catppuccin").setup({
+      transparent_background = vim.g.transparent_enabled,
+    })
 
-    vim.cmd.colorscheme "catppuccin-mocha"
+    vim.cmd.colorscheme("catppuccin-mocha")
   end,
 }
 
@@ -16,10 +18,35 @@ local rosepine = {
   lazy = false,
   priority = 1000,
   config = function()
-    require("rose-pine").setup {}
+    require("rose-pine").setup({
+      styles = {
+        transparent = vim.g.transparent_enabled,
+      },
+    })
 
-    vim.cmd.colorscheme "rose-pine-moon"
+    vim.cmd.colorscheme("rose-pine-moon")
   end,
 }
 
-return catppuccin
+return {
+  rosepine, -- ONE OF THE THEMES DEFINED ABOVE
+  { -- UI TRANSPARENCY
+    "xiyaowong/transparent.nvim",
+    config = function()
+      require("transparent").setup({
+        extra_groups = {},
+      })
+
+      require("transparent").clear_prefix("lualine")
+      require("transparent").clear_prefix("NeoTree")
+      require("transparent").clear_prefix("BufferLine")
+
+      vim.keymap.set(
+        "n",
+        "<Leader>t",
+        ":TransparentToggle<CR>",
+        { noremap = true, silent = true, desc = "Toggle Transparency" }
+      )
+    end,
+  },
+}
